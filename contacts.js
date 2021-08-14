@@ -40,7 +40,9 @@ const removeContact = async (contactId) => {
     if (!idx === -1) {
       throw new Error("There is no product with this id");
     }
-    const newContacts = contsctsList.filter((item) => item.id !== contactId);
+    const newContacts = contsctsList.filter(
+      (item) => String(item.id) !== String(contactId)
+    );
     await updateContacts(newContacts, contactsPath);
     console.table(newContacts);
     return contsctsList[idx];
