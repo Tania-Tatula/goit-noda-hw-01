@@ -36,7 +36,7 @@ const getContactById = async (contactId) => {
 const removeContact = async (contactId) => {
   try {
     const contsctsList = await contactsList(contactsPath);
-    const idx = contsctsList.findIndex((item) => item.id == contactId);
+    const idx = contsctsList.findIndex((item) => String(item.id) === String(contactId));
     if (!idx === -1) {
       throw new Error("There is no product with this id");
     }
